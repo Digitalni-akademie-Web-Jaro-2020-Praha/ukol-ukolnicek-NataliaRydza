@@ -13,3 +13,12 @@ const updateTasks = () => {
 }
 
 updateTasks()
+
+const addTask = () => {
+  const newTaskElm = document.querySelector('#new-task').value;
+  tasks.push(newTaskElm);
+  updateTasks();
+}
+
+const btnElm = document.querySelector('.btn-add');
+btnElm.addEventListener('click', addTask);
