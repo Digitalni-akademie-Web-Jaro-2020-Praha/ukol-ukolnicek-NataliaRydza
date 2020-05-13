@@ -15,10 +15,24 @@ const updateTasks = () => {
 updateTasks()
 
 const addTask = () => {
-  const newTaskElm = document.querySelector('#new-task').value;
-  tasks.push(newTaskElm);
-  updateTasks();
+  const newTaskElm = document.querySelector('#new-task');
+
+  if (newTaskElm.value === '') {
+    return false
+  }
+  else {
+    tasks.push(newTaskElm.value);
+    updateTasks();
+    newTaskElm.value = ''
+  }
 }
 
 const btnElm = document.querySelector('.btn-add');
 btnElm.addEventListener('click', addTask);
+
+document.querySelector('#new-task').addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    addTask()
+  }
+
+});
